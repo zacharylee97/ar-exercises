@@ -4,7 +4,7 @@ class Employee < ActiveRecord::Base
   validates :last_name, presence: true
   validates :hourly_rate, inclusion: { in: (40..200) }
   validates :store_id, presence: true
-  after_create :generate_password
+  before_save :generate_password
   private
   def generate_password
     if password.nil?
